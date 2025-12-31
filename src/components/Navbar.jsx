@@ -9,11 +9,10 @@ import {
   Button,
   Badge,
 } from "@mui/material";
-import { ShoppingCart,  Search, Favorite } from "@mui/icons-material";
+import { ShoppingCart, Search, Favorite } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 function Navbar({ cartCount = 0, wishlistCount = 0 }) {
-  // Menu items for navigation
   const menuItems = [
     { label: "Home", path: "/" },
     { label: "Men", path: "/products/men" },
@@ -39,41 +38,62 @@ function Navbar({ cartCount = 0, wishlistCount = 0 }) {
         }}
       >
         <Box sx={{ display: "flex", gap: 3 }}>
-          {["7 Days Easy Returns", "Best Prices"].map((text, index) => (
+          {[
+            { label: "7 Days Easy Returns", url: "/returns" },
+            { label: "Best Prices", url: "/best-prices" },
+          ].map((item, index) => (
             <Typography
               key={index}
+              component={Link}
+              to={item.url}
               sx={{
                 fontSize: 14,
                 cursor: "pointer",
                 px: 1,
                 borderRadius: 1,
+                textDecoration: "none",
+                color: "inherit",
                 transition: "all 0.3s",
-                "&:hover": { background: gradient, transform: "scale(1.05)" },
+                "&:hover": {
+                  background: gradient,
+                  transform: "scale(1.05)",
+                },
               }}
             >
-              {text}
+              {item.label}
             </Typography>
           ))}
         </Box>
 
         <Box sx={{ display: "flex", gap: 3 }}>
-          {["Help Center", "Sell On Vogstya"].map((text, index) => (
+          {[
+            { label: "Help Center", url: "/help" },
+            { label: "Sell On Vogstya", url: "/seller/login" },
+          ].map((item, index) => (
             <Typography
               key={index}
+              component={Link}
+              to={item.url}
               sx={{
                 fontSize: 14,
                 cursor: "pointer",
                 px: 1,
                 borderRadius: 1,
+                textDecoration: "none",
+                color: "inherit",
                 transition: "all 0.3s",
-                "&:hover": { background: gradient, transform: "scale(1.05)" },
+                "&:hover": {
+                  background: gradient,
+                  transform: "scale(1.05)",
+                },
               }}
             >
-              {text}
+              {item.label}
             </Typography>
           ))}
         </Box>
       </Box>
+      {/* ✅ TOP BAR BOX CLOSED HERE */}
 
       {/* Main Navbar */}
       <AppBar position="sticky" sx={{ bgcolor: "#0b0607" }}>
@@ -131,7 +151,6 @@ function Navbar({ cartCount = 0, wishlistCount = 0 }) {
 
           {/* Login, Cart, Wishlist */}
           <Box sx={{ display: "flex", gap: 2 }}>
-            {/* Login */}
             <Button
               component={Link}
               to="/login"
@@ -140,7 +159,6 @@ function Navbar({ cartCount = 0, wishlistCount = 0 }) {
               LOGIN
             </Button>
 
-            {/* Cart */}
             <IconButton
               component={Link}
               to="/cart"
@@ -151,7 +169,6 @@ function Navbar({ cartCount = 0, wishlistCount = 0 }) {
               </Badge>
             </IconButton>
 
-            {/* Wishlist */}
             <IconButton
               component={Link}
               to="/wishlist"
@@ -187,7 +204,10 @@ function Navbar({ cartCount = 0, wishlistCount = 0 }) {
                   borderRadius: 1,
                   textDecoration: "none",
                   transition: "all 0.3s",
-                  "&:hover": { background: gradient, transform: "scale(1.05)" },
+                  "&:hover": {
+                    background: gradient,
+                    transform: "scale(1.05)",
+                  },
                 }}
               >
                 {item.label}

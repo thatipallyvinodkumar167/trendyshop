@@ -10,6 +10,9 @@ import Fashion from "./pages/Fashion";
 import Jewelry from "./pages/Jewelry";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import SellerDashboard from "./pages/seller/SellerDashboard";
+import SellerLogin from "./pages/seller/SellerLogin";
+import SellerRegister from "./pages/seller/SellerRegister";
 
 function App() {
   return (
@@ -26,6 +29,11 @@ function App() {
 
         <Route path="/login" element={<Login />} />
          <Route path="/cart" element={<Cart />} />
+
+
+          <Route path="/sellerDashboard" element={<SellerDashboard />} />
+          <Route path="/seller/login" element={<SellerLogin />} />
+          <Route path="/seller/register" element={<SellerRegister />} />   
       </Routes>
       <Footer/>
     </>
